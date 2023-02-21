@@ -1,6 +1,10 @@
 package com.hospital.api.controller;
 
+
+
+
 import com.hospital.api.payload.patient.PatientStatusDto;
+import com.hospital.api.payload.patient.PatientStatusModel;
 import com.hospital.api.payload.patient.PatientStatusNote;
 import com.hospital.api.service.DoctorService;
 import com.hospital.api.service.PatientStatusService;
@@ -30,7 +34,7 @@ public class PatientStatusController {
     }
 
     @GetMapping("all")
-    public ResponseEntity<List<PatientStatusDto>> getAll(){
+    public ResponseEntity<List<PatientStatusModel>> getAll(){
         return new ResponseEntity<>(service.getAll(), HttpStatus.FOUND);
     }
 }

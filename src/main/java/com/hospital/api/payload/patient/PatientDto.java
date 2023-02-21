@@ -1,7 +1,9 @@
 package com.hospital.api.payload.patient;
 
 
-import com.hospital.api.payload.*;
+
+
+import com.hospital.api.payload.MedicationsExaminationsDto;
 import com.hospital.api.payload.department.DepartmentBuildingDto;
 import com.hospital.api.payload.doctor.DoctorDto;
 import com.hospital.api.payload.nurse.NurseDto;

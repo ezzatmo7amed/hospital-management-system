@@ -1,5 +1,7 @@
 package com.hospital.api.payload.patient;
 
+
+
 import com.hospital.api.payload.nurse.NurseModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

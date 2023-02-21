@@ -1,5 +1,7 @@
 package com.hospital.api.repository;
 
+
+
 import com.hospital.api.model.Nurse;
 import org.springframework.data.jpa.repository.JpaRepository;
 

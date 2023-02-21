@@ -1,8 +1,13 @@
 package com.hospital.api.controller;
 
+
+
+
 import com.hospital.api.payload.patient.PatientDto;
 import com.hospital.api.payload.patient.PatientModel;
 import com.hospital.api.service.PatientService;
+import io.swagger.v3.oas.annotations.Operation;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +23,7 @@ public class PatientController {
     private final PatientService service;
 
     @PostMapping("create")
-    public ResponseEntity<PatientDto> create(@RequestBody  PatientDto patientDto){
+    public ResponseEntity<PatientDto> create(@RequestBody PatientDto patientDto){
         return  new ResponseEntity<>(service.create(patientDto), HttpStatus.CREATED);
 
     }
@@ -30,7 +35,7 @@ public class PatientController {
         return new ResponseEntity<>(service.getById(id), HttpStatus.FOUND);
     }
     @GetMapping("un/")
-    public ResponseEntity<PatientDto> findByUnifiedNumber(@RequestParam (defaultValue = "unifiedNumber") String unifiedNumber){
+    public ResponseEntity<PatientModel> findByUnifiedNumber(@RequestParam (defaultValue = "unifiedNumber") String unifiedNumber){
         return new ResponseEntity<>(service.findByUnifiedNumber(unifiedNumber), HttpStatus.FOUND);
     }
 
@@ -39,6 +44,12 @@ public class PatientController {
         return  new ResponseEntity<>(service.addAll(model), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Get All Patients In Hospital")
+ /*   @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the book", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Book not found", content = @Content) })*/
     @GetMapping("all/InHospital")
     public ResponseEntity<List<PatientModel>> getAllInHospital(){
         return new ResponseEntity<>(service.getAllInHospital(), HttpStatus.FOUND);
@@ -47,5 +58,10 @@ public class PatientController {
     @GetMapping("all/OutHospital")
     public  ResponseEntity<List<PatientModel>> getAllOutHospital(){
         return new ResponseEntity<>(service.getAllOutHospital(), HttpStatus.FOUND);
+    }
+
+    @GetMapping("count")
+    public Long numberOfPatients(){
+        return service.numberOfPatients();
     }
 }

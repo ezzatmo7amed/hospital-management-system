@@ -1,14 +1,16 @@
 package com.hospital.api.service.Imp;
 
-import com.hospital.api.exception.NotFoundException;
 
+
+
+import com.hospital.api.exception.NotFoundException;
 import com.hospital.api.model.Doctor;
 import com.hospital.api.model.Patient;
 import com.hospital.api.model.PatientStatus;
 import com.hospital.api.payload.doctor.DoctorDeptModel;
 import com.hospital.api.payload.doctor.DoctorDto;
-import com.hospital.api.payload.patient.PatientStatusDto;
 import com.hospital.api.payload.patient.PatientModel;
+import com.hospital.api.payload.patient.PatientStatusDto;
 import com.hospital.api.payload.patient.PatientStatusNote;
 import com.hospital.api.repository.DoctorRepository;
 import com.hospital.api.repository.PatientRepository;
@@ -31,7 +33,7 @@ public class DoctorServiceImp implements DoctorService {
     @Override
     public DoctorDto create(DoctorDto doctorDto) {
 
-        Doctor doctor = Mapper.map(doctorDto,Doctor.class);
+        Doctor doctor = Mapper.map(doctorDto, Doctor.class);
         doctorRepository.save(doctor);
         return Mapper.map(doctor,DoctorDto.class);
     }

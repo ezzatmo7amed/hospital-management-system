@@ -1,9 +1,13 @@
 package com.hospital.api.service;
 
+
+
+
+
 import com.hospital.api.payload.doctor.DoctorDeptModel;
 import com.hospital.api.payload.doctor.DoctorDto;
-import com.hospital.api.payload.patient.PatientStatusDto;
 import com.hospital.api.payload.patient.PatientModel;
+import com.hospital.api.payload.patient.PatientStatusDto;
 import com.hospital.api.payload.patient.PatientStatusNote;
 
 import java.util.List;

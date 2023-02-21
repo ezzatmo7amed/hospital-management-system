@@ -1,8 +1,11 @@
 package com.hospital.api.service.Imp;
 
+
+
 import com.hospital.api.exception.NotFoundException;
 import com.hospital.api.model.PatientStatus;
 import com.hospital.api.payload.patient.PatientStatusDto;
+import com.hospital.api.payload.patient.PatientStatusModel;
 import com.hospital.api.repository.PatientStatusRepository;
 import com.hospital.api.service.PatientStatusService;
 import com.hospital.api.util.Mapper;
@@ -15,13 +18,13 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientStatusServiceImp implements PatientStatusService {
 
-    private final PatientStatusRepository pSRepository;
+    private final PatientStatusRepository patientStatusRepository;
 
     @Override
     public PatientStatusDto create(PatientStatusDto pSDto) {
 
-        PatientStatus patientStatus = Mapper.map(pSDto,PatientStatus.class);
-        pSRepository.save(patientStatus);
+        PatientStatus patientStatus = Mapper.map(pSDto, PatientStatus.class);
+        patientStatusRepository.save(patientStatus);
         return Mapper.map(patientStatus, PatientStatusDto.class);
     }
 
@@ -31,12 +34,12 @@ public class PatientStatusServiceImp implements PatientStatusService {
     }
 
     @Override
-    public List<PatientStatusDto> getAll() {
-        List<PatientStatus> patientStatuses = pSRepository.findAll();
+    public List<PatientStatusModel> getAll() {
+        List<PatientStatus> patientStatuses = patientStatusRepository.findAll();
         if(patientStatuses.isEmpty()){
             throw new NotFoundException(" Patients Status Not Found ..! ");
         }else {
-            return Mapper.mapAll(patientStatuses, PatientStatusDto.class);
+            return Mapper.mapAll(patientStatuses, PatientStatusModel.class);
         }
 
 

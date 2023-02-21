@@ -1,7 +1,9 @@
 package com.hospital.api.payload.nurse;
 
-import com.hospital.api.payload.department.DepartmentBuildingDto;
+
+
 import com.hospital.api.payload.MedicationsExaminationsDto;
+import com.hospital.api.payload.department.DepartmentBuildingDto;
 import com.hospital.api.payload.patient.PatientStatusModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

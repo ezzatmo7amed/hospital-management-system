@@ -1,6 +1,7 @@
 package com.hospital.api.payload.patient;
 
-import com.hospital.api.payload.nurse.NurseDto;
+
+
 import com.hospital.api.payload.nurse.NurseModel;
 import lombok.*;
 

@@ -1,5 +1,10 @@
 package com.hospital.api.service.Imp;
 
+
+
+
+
+
 import com.hospital.api.exception.NotFoundException;
 import com.hospital.api.model.MedicationsExaminations;
 import com.hospital.api.model.Patient;
@@ -9,8 +14,6 @@ import com.hospital.api.repository.MedicationsExaminationsRepository;
 import com.hospital.api.repository.PatientRepository;
 import com.hospital.api.service.PatientService;
 import com.hospital.api.util.Mapper;
-
-
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -82,12 +85,17 @@ public class PatientServiceImp implements PatientService {
     }
 
     @Override
-    public PatientDto findByUnifiedNumber(String unifiedNumber) {
+    public PatientModel findByUnifiedNumber(String unifiedNumber) {
         Patient patient = patientRepository.findByUnifiedNumber(unifiedNumber);
         if (patient == null) {
             throw new NotFoundException(" Patient Not Found With Unified Number : " + unifiedNumber);
         } else {
-            return Mapper.map(patient, PatientDto.class);
+            return Mapper.map(patient, PatientModel.class);
         }
+    }
+
+    @Override
+    public Long numberOfPatients() {
+        return patientRepository.count();
     }
 }

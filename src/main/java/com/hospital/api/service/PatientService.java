@@ -1,5 +1,9 @@
 package com.hospital.api.service;
 
+
+
+
+
 import com.hospital.api.payload.patient.PatientDto;
 import com.hospital.api.payload.patient.PatientModel;
 
@@ -14,5 +18,6 @@ public interface PatientService {
     List<PatientModel> getAllOutHospital();
     List<PatientDto> addAll(List<PatientDto> patientListDto);
 
-    PatientDto findByUnifiedNumber(String unifiedNumber);
+    PatientModel findByUnifiedNumber(String unifiedNumber);
+    Long numberOfPatients();
 }

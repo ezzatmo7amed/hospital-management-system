@@ -1,5 +1,6 @@
 package com.hospital.api.controller;
 
+
 import com.hospital.api.payload.department.DepartmentBuildingDto;
 import com.hospital.api.service.DepartmentBuildingService;
 import lombok.AllArgsConstructor;
