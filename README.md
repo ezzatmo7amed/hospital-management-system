@@ -6,4 +6,4 @@
 - The doctor follows up on the patient's condition through the system
   based on nursing reports.
   ▪ Tools:
-  (Spring Boot – Hibernate -MySQL DB -Json)
+  (Spring Boot – Hibernate -MySQL DB -Json-Swagger-ui )
