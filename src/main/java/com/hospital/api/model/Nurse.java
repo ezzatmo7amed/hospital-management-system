@@ -33,7 +33,7 @@ public class Nurse {
     private Long mgrId;
 
     @ManyToOne
-    @JoinColumn(name = "division_id",referencedColumnName = "id")
+    @JoinColumn(name = "department_id",referencedColumnName = "id")
     @JsonBackReference
     private Department dept;
 

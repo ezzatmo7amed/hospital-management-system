@@ -17,9 +17,9 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "division_name",nullable = false)
+    @Column(name = "department_name",nullable = false)
     private String name;
-    @Column(name = "division_code",nullable = false)
+    @Column(name = "department_code",nullable = false)
     private String code;
 
     @OneToMany(mappedBy = "dept")
