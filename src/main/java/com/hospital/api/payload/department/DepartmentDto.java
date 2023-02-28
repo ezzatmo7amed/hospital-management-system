@@ -13,5 +13,5 @@ public class DepartmentDto {
     private Long id;
     private String name;
     private String code;
-   // List<DoctorDto> doctors;
+
 }

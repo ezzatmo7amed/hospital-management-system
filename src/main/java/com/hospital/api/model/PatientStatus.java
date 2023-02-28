@@ -2,6 +2,7 @@ package com.hospital.api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.hospital.api.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +17,8 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "patients_status")
-public class PatientStatus {
+public class PatientStatus extends BaseEntity<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "temperature")
     private Double temperature;
@@ -42,16 +40,6 @@ public class PatientStatus {
     @Column(name = "notes",length = 400,nullable = true)
     private String note;
 
-  /*  @ManyToOne
-    @JoinColumn(name = "patient_id",referencedColumnName = "id")
-    @JsonBackReference
-    Patient patient;*/
-
- /*   @ManyToMany(fetch = FetchType.EAGER,targetEntity = Patient.class)
-    @JoinTable(name="patient_patientStatus",joinColumns =
-            {@JoinColumn(name="patientStatus_id")},inverseJoinColumns =
-            {@JoinColumn(name="patient_id")})
-    @JsonManagedReference*/
     @ManyToOne
     @JoinColumn(name = "patient_id",referencedColumnName = "id")
     @JsonBackReference

@@ -10,6 +10,7 @@ import com.hospital.api.payload.nurse.NurseDto;
 import lombok.*;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -25,11 +26,19 @@ public class PatientDto {
     private String address;
     private int age;
     private String gender;
-    private Date entryTime;
     private Date exitDate;
     private String currentDivision;
     private String transferTo;
     private String unifiedNumber;
+
+    private String createdBy;
+    private LocalDateTime createdDate;
+    private String lastModifiedBy;
+    private LocalDateTime lastModifiedDate;
+
+
+
+
     private DoctorDto doctor;
 
     private DepartmentBuildingDto building;

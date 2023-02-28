@@ -1,6 +1,7 @@
 package com.hospital.api.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.hospital.api.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +12,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "departments")
-public class Department {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Department extends BaseEntity<Long> {
 
     @Column(name = "department_name",nullable = false)
     private String name;

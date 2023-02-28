@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Setter
@@ -19,7 +20,7 @@ public class PatientModel2 {
     private int age;
     private String gender;
     private String currentDivision;
-    private Date entryTime;
+    private LocalDateTime createdDate;
     private Date exitDate;
     private String transferTo;
     private String unifiedNumber;

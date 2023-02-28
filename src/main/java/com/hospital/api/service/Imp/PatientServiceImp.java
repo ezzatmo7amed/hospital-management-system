@@ -14,7 +14,10 @@ import com.hospital.api.repository.MedicationsExaminationsRepository;
 import com.hospital.api.repository.PatientRepository;
 import com.hospital.api.service.PatientService;
 import com.hospital.api.util.Mapper;
+import com.zaxxer.hikari.util.ClockSource;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Log4j2
 @AllArgsConstructor
 public class PatientServiceImp implements PatientService {
 

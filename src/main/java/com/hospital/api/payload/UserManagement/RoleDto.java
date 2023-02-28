@@ -10,9 +10,9 @@ import lombok.*;
 public class RoleDto {
     private Long id;
 
-    private String roleName;
+    private String name;
 
-    private String roleCode;
+    private String code;
 
 
 
