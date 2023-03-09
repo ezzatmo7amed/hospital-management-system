@@ -24,35 +24,35 @@ public class DoctorController {
     private final DoctorService service;
     @PostMapping("create")
     public ResponseEntity<DoctorDto> create(@RequestBody DoctorDto doctorDto){
-        return  new ResponseEntity<>(service.create(doctorDto), HttpStatus.CREATED);
+        return  ResponseEntity.ok(service.create(doctorDto));
 
     }
 
     @PostMapping("addAll")
     public ResponseEntity<List<DoctorDto>> addDoctorsList(@RequestBody List<DoctorDto> docListDto){
-        return  new ResponseEntity<>(service.addAll(docListDto), HttpStatus.CREATED);
+        return ResponseEntity.ok(service.addAll(docListDto));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<DoctorDto> getById(@PathVariable(value = "id") Long id){
-        return new ResponseEntity<>(service.getById(id), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @GetMapping("all")
     public ResponseEntity<List<DoctorDto>> getAll(){
 
-        return new ResponseEntity<>(service.getAll(), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getAll());
     }
 
 
 
     @GetMapping("patients/{doctorId}")
     public  ResponseEntity<List<PatientModel>> getDoctorPatients(@PathVariable(value = "doctorId") Long doctorId){
-        return new ResponseEntity<>(service.getDoctorPatients(doctorId), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getDoctorPatients(doctorId));
     }
 
     @GetMapping("byDept/")
     public  ResponseEntity<List<DoctorDeptModel>> getByDeptName(@RequestParam (defaultValue = "deptName") String deptName) {
-        return new ResponseEntity<>(service.getByDeptName(deptName), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getByDeptName(deptName));
     }
 }

@@ -13,28 +13,28 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/dept/")
+@RequestMapping("/api/v1/department/")
 public class DepartmentController {
 
     private final DepartmentService service;
     @PostMapping("create")
     public ResponseEntity<DepartmentDto> create(@RequestBody DepartmentDto divDto){
-        return  new ResponseEntity<>(service.create(divDto), HttpStatus.CREATED);
+        return  ResponseEntity.ok(service.create(divDto));
     }
 
     @GetMapping("{id}")
 
     public  ResponseEntity<DepartmentDto> getById(@PathVariable(value = "id") Long id){
-        return new ResponseEntity<>(service.getById(id), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @GetMapping("all")
     public ResponseEntity<List<DepartmentDto>> getAll(){
-        return new ResponseEntity<>(service.getAll(), HttpStatus.FOUND);
+        return  ResponseEntity.ok(service.getAll());
 
     }
-    @PostMapping("addAll")
+    @PostMapping("addList")
     public ResponseEntity<List<DepartmentDto>> addDivList(@RequestBody List<DepartmentDto> divListDto){
-        return  new ResponseEntity<>(service.addDivList(divListDto), HttpStatus.CREATED);
+        return ResponseEntity.ok(service.addDivList(divListDto));
     }
 }

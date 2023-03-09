@@ -23,17 +23,17 @@ public class NurseController {
 
     @RequestMapping("create")
     public ResponseEntity<NurseDto> create(@RequestBody NurseDto nurseDto){
-        return  new ResponseEntity<>(service.create(nurseDto), HttpStatus.CREATED);
+        return ResponseEntity.ok(service.create(nurseDto));
     }
 
     @PostMapping("addAll")
     public ResponseEntity<List<NurseDto>> addAllNurses(@RequestBody List<NurseDto> model){
-        return  new ResponseEntity<>(service.addAll(model), HttpStatus.CREATED);
+        return  ResponseEntity.ok(service.addAll(model));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<NurseDto> getById(@PathVariable(value = "id") Long id){
-        return new ResponseEntity<>(service.getById(id), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @GetMapping("all")
