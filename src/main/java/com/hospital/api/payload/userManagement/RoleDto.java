@@ -1,4 +1,4 @@
-package com.hospital.api.payload.UserManagement;
+package com.hospital.api.payload.userManagement;
 
 
 import lombok.*;
@@ -9,10 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 public class RoleDto {
     private Long id;
-
     private String name;
 
-    private String code;
 
 
 

@@ -5,7 +5,6 @@ package com.hospital.api.controller;
 import com.hospital.api.payload.department.DepartmentDto;
 import com.hospital.api.service.DepartmentService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

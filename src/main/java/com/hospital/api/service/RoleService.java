@@ -2,7 +2,7 @@ package com.hospital.api.service;
 
 
 
-import com.hospital.api.payload.UserManagement.RoleDto;
+import com.hospital.api.payload.userManagement.RoleDto;
 
 import java.util.List;
 
@@ -11,4 +11,6 @@ public interface RoleService {
     RoleDto getById(Long id);
     List< RoleDto> getAll();
     RoleDto update(RoleDto model);
+
+    List<RoleDto> addRoles(List<RoleDto> roles);
 }

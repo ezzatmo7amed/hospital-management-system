@@ -4,7 +4,7 @@ package com.hospital.api.service.Imp;
 
 import com.hospital.api.exception.NotFoundException;
 import com.hospital.api.model.usermanagement.User;
-import com.hospital.api.payload.UserManagement.UserDto;
+import com.hospital.api.payload.userManagement.UserDto;
 import com.hospital.api.repository.UserRepository;
 import com.hospital.api.service.UserService;
 import com.hospital.api.util.Mapper;
@@ -51,7 +51,12 @@ public class UserServiceImp implements UserService {
     @Override
     public List<UserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
-        return Mapper.mapAll(users, UserDto.class);
+        if (users.isEmpty()){
+            throw new NotFoundException("Users Not Found ..!");
+        }else{
+            return Mapper.mapAll(users, UserDto.class);
+        }
+
     }
 
     @Override

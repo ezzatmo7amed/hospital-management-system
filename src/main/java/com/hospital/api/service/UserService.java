@@ -2,7 +2,7 @@ package com.hospital.api.service;
 
 
 
-import com.hospital.api.payload.UserManagement.UserDto;
+import com.hospital.api.payload.userManagement.UserDto;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
-package com.hospital.api.payload.UserManagement;
+package com.hospital.api.payload.userManagement;
 
 
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import java.util.Date;
 import java.util.Set;
@@ -12,18 +13,11 @@ import java.util.Set;
 public class UserDto {
 
     private Long id;
-
-    private String firstName;
-
-    private String lastName;
-
+    private String name;
     private String userName;
-
     private String password;
-
+    @Email
     private String email;
-
     private Date createdAt;
-
-    private Set<RoleDto> roleList;
+    private Set<RoleDto> roles;
 }

@@ -10,19 +10,16 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@Table(name = "Roles")
+@Table(name = "Roles",uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name"})
+})
 public class Role extends BaseEntity<Long> {
 
-    @Column(name = "role_name",nullable = false)
+    @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "role_code",nullable = false)
-    private String code;
 
 
-    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY,targetEntity = User.class)
-    @JoinTable(name="users_roles",joinColumns =
-            {@JoinColumn(name="role_id")},inverseJoinColumns =
-            {@JoinColumn(name="user_id")})
+    @ManyToMany(mappedBy = "roles")
     @JsonBackReference
     private Set<User> users ;
 }
