@@ -3,6 +3,7 @@ package com.hospital.api.service.Imp;
 
 
 import com.hospital.api.exception.NotFoundException;
+import com.hospital.api.exception.ResourceExists;
 import com.hospital.api.model.usermanagement.User;
 import com.hospital.api.payload.userManagement.UserDto;
 import com.hospital.api.repository.UserRepository;
@@ -31,7 +32,7 @@ public class UserServiceImp implements UserService {
             Optional<User> duplicateUserNameCheck = userRepository.findByUserName(model.getUserName());
 
             if (duplicateMailCheck.isPresent() || duplicateUserNameCheck.isPresent()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A user with a duplicate National Or Email already exists !");
+                throw new ResourceExists("A user with a duplicate National Or Email already exists !");
             }
             User user = Mapper.map(model, User.class);
             userRepository.save(user);
