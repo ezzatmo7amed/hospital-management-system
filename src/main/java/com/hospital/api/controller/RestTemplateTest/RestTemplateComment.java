@@ -1,13 +1,10 @@
 package com.hospital.api.controller.RestTemplateTest;
 
 import com.hospital.api.payload.RestTemplateTest.CommentDto;
-import com.hospital.api.service.Imp.RestTemplateTest.RestTemplateCommentServive;
+import com.hospital.api.service.Imp.RestTemplateTest.RestTemplateCommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ import java.util.List;
 @RequestMapping("rt/")
 public class RestTemplateComment {
 
-    private final RestTemplateCommentServive service;
+    private final RestTemplateCommentService service;
 
     @GetMapping("all")
     public ResponseEntity<List<CommentDto>> getAllComments(){
@@ -27,5 +24,9 @@ public class RestTemplateComment {
     @PostMapping("addAll")
     public ResponseEntity<List<CommentDto>> addComments(){
         return ResponseEntity.ok(service.addComments());
+    }
+    @GetMapping("{id}")
+    public ResponseEntity<CommentDto> getById(@PathVariable Long id){
+        return ResponseEntity.ok(service.getById(id));
     }
 }

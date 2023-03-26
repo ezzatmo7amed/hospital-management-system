@@ -28,6 +28,7 @@ public class UserServiceImp implements UserService {
     public UserDto create(UserDto model) {
         try {
 
+
             Optional<User> duplicateMailCheck = userRepository.findByEmail(model.getEmail());
             Optional<User> duplicateUserNameCheck = userRepository.findByUserName(model.getUserName());
 
