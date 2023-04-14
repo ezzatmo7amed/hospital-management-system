@@ -1,7 +1,6 @@
 package com.hospital.api.model;
 
 import com.fasterxml.jackson.annotation.*;
-import com.hospital.api.base.BaseEntity;
 import com.hospital.api.base.BaseStaff;
 import jakarta.persistence.*;
 import lombok.*;

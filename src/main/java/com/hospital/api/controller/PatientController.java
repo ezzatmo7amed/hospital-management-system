@@ -28,20 +28,18 @@ public class PatientController {
 
     }
 
-
-
     @GetMapping("{id}")
     public ResponseEntity<PatientDto> getById(@PathVariable(value = "id") Long id){
-        return new ResponseEntity<>(service.getById(id), HttpStatus.FOUND);
+        return  ResponseEntity.ok(service.getById(id));
     }
     @GetMapping("un/")
     public ResponseEntity<PatientModel> findByUnifiedNumber(@RequestParam (defaultValue = "unifiedNumber") String unifiedNumber){
-        return new ResponseEntity<>(service.findByUnifiedNumber(unifiedNumber), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.findByUnifiedNumber(unifiedNumber));
     }
 
     @PostMapping("addAll")
     public ResponseEntity<List<PatientDto>> addAll(@RequestBody List<PatientDto> model){
-        return  new ResponseEntity<>(service.addAll(model), HttpStatus.CREATED);
+        return ResponseEntity.ok(service.addAll(model));
     }
 
     @Operation(summary = "Get All Patients In Hospital")
@@ -57,7 +55,7 @@ public class PatientController {
 
     @GetMapping("all/OutHospital")
     public  ResponseEntity<List<PatientModel>> getAllOutHospital(){
-        return new ResponseEntity<>(service.getAllOutHospital(), HttpStatus.FOUND);
+        return ResponseEntity.ok(service.getAllOutHospital());
     }
 
     @GetMapping("count")

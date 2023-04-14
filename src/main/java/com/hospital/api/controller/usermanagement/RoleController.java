@@ -1,4 +1,4 @@
-package com.hospital.api.controller;
+package com.hospital.api.controller.usermanagement;
 
 
 import com.hospital.api.payload.userManagement.RoleDto;

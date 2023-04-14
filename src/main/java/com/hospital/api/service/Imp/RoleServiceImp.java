@@ -23,7 +23,7 @@ public class RoleServiceImp implements RoleService {
     @Override
     public RoleDto create(RoleDto model) {
         Optional<Role> checkRoleName = roleRepository.findByName(model.getName());
-           if(!checkRoleName.isEmpty()){
+           if(checkRoleName.isPresent()){
                throw  new ResourceExists("The Role Is Already Exist..");
            }else {
                Role role = Mapper.map(model, Role.class);
