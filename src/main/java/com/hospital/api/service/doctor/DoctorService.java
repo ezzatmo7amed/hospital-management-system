@@ -24,4 +24,6 @@ public interface DoctorService {
 
     PatientStatusDto addNoteOnPatientStatus(PatientStatusNote model);
 
+    String deleteById(Long id);
+
 }

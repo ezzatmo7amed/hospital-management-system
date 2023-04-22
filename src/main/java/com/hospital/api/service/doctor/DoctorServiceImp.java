@@ -96,4 +96,17 @@ public class DoctorServiceImp implements DoctorService {
 
         return Mapper.map(patientStatus,PatientStatusDto.class);
     }
+
+    @Override
+    public String deleteById(Long id) {
+
+        if (getById(id) == null) {
+            throw new RuntimeException("Doctor Not Found With Id:"+id);
+        }else{
+            doctorRepository.deleteById(id);
+            return "Doctor Deleted With Id:"+id;
+        }
+
+
+    }
 }

@@ -6,6 +6,10 @@ import com.hospital.api.payload.RestTemplateTest.CommentDto;
 import com.hospital.api.repository.RestTemplateCommentRepo;
 import com.hospital.api.util.Mapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -21,12 +25,13 @@ public class RestTemplateCommentServiceImp implements RestTemplateCommentService
     String COMMENT_URL;
 
     public RestTemplateCommentServiceImp(RestTemplateCommentRepo commentRepo) {
+
         this.commentRepo = commentRepo;
     }
 
     RestTemplate restTemplate= new RestTemplate();
     @Override
-    public List<CommentDto> getAllComments() {
+    public List<CommentDto> getAllCommentsFromExternal() {
 
 
         ResponseEntity<List> response = restTemplate.getForEntity(COMMENT_URL, List.class);
@@ -35,9 +40,15 @@ public class RestTemplateCommentServiceImp implements RestTemplateCommentService
     }
 
     @Override
+    public Page<Comment> getAllPagination(int pageNumber,int size) {
+        Pageable page = PageRequest.of(pageNumber,size);
+        return commentRepo.findAll(page);
+    }
+
+    @Override
     public List<CommentDto> addComments() {
 
-        List<Comment> comments = Mapper.mapAll(getAllComments(), Comment.class);
+        List<Comment> comments = Mapper.mapAll(getAllCommentsFromExternal(), Comment.class);
         commentRepo.saveAll(comments);
         return Mapper.mapAll(comments, CommentDto.class);
     }

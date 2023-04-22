@@ -9,6 +9,7 @@ import com.hospital.api.payload.userManagement.UserDto;
 import com.hospital.api.repository.UserRepository;
 import com.hospital.api.util.Mapper;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,7 +22,6 @@ import java.util.Optional;
 public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
-
 
     @Override
     public UserDto create(UserDto model) {
@@ -88,9 +88,12 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void deleteUserById(Long id) {
-        if(getById(id) != null)
+    public String deleteUserById(Long id) {
+        if(getById(id) == null){
+            throw new RuntimeException("User Not Found With Id :"+id);
+        }else {
             userRepository.deleteById(id);
-
+           return "User Deleted With Id :"+id;
+        }
     }
 }

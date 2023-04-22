@@ -54,4 +54,9 @@ public class DoctorController {
     public  ResponseEntity<List<DoctorDeptModel>> getByDeptName(@RequestParam (defaultValue = "deptName") String deptName) {
         return ResponseEntity.ok(service.getByDeptName(deptName));
     }
+
+    @DeleteMapping("delete/{id}")
+    public String deleteById(@PathVariable(value = "id") Long id){
+        return service.deleteById(id);
+    }
 }
