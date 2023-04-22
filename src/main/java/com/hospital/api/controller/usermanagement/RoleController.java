@@ -2,7 +2,7 @@ package com.hospital.api.controller.usermanagement;
 
 
 import com.hospital.api.payload.userManagement.RoleDto;
-import com.hospital.api.service.RoleService;
+import com.hospital.api.service.usermanagement.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

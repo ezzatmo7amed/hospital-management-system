@@ -4,6 +4,7 @@ package com.hospital.api.payload.doctor;
 
 
 import com.hospital.api.payload.department.DepartmentDto;
+import com.hospital.api.payload.userManagement.UserDto;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.*;
@@ -28,4 +29,5 @@ public class DoctorDto {
     private String gender;
     private Long mgrId;
     private DepartmentDto dept;
+    private UserDto user;
 }

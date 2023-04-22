@@ -1,4 +1,4 @@
-package com.hospital.api.service.Imp.filesUpload;
+package com.hospital.api.service.filesUpload;
 
 import com.hospital.api.exception.FileStorageException;
 import lombok.extern.log4j.Log4j2;

@@ -5,7 +5,7 @@ package com.hospital.api.controller;
 import com.hospital.api.payload.nurse.NurseDeptModel;
 import com.hospital.api.payload.nurse.NurseDto;
 import com.hospital.api.payload.nurse.PatientResNurseModel;
-import com.hospital.api.service.NurseService;
+import com.hospital.api.service.nurse.NurseService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

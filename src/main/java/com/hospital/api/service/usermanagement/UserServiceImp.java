@@ -1,4 +1,4 @@
-package com.hospital.api.service.Imp;
+package com.hospital.api.service.usermanagement;
 
 
 
@@ -7,7 +7,6 @@ import com.hospital.api.exception.ResourceExists;
 import com.hospital.api.model.usermanagement.User;
 import com.hospital.api.payload.userManagement.UserDto;
 import com.hospital.api.repository.UserRepository;
-import com.hospital.api.service.UserService;
 import com.hospital.api.util.Mapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +29,7 @@ public class UserServiceImp implements UserService {
 
 
             Optional<User> duplicateMailCheck = userRepository.findByEmail(model.getEmail());
-            Optional<User> duplicateUserNameCheck = userRepository.findByUserName(model.getUserName());
+            Optional<User> duplicateUserNameCheck = userRepository.findByUsername(model.getUsername());
 
             if (duplicateMailCheck.isPresent() || duplicateUserNameCheck.isPresent()) {
                 throw new ResourceExists("A user with a duplicate National Or Email already exists !");
@@ -45,9 +44,27 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public List<UserDto> addUsers(List<UserDto> users) {
+
+        List<User> usersList = Mapper.mapAll(users, User.class);
+        userRepository.saveAll(usersList);
+        return Mapper.mapAll(usersList, UserDto.class);
+    }
+
+    @Override
     public UserDto getById(Long id) {
         User user = userRepository.findById(id).orElseThrow(()-> new NotFoundException(" User Not Found With Id : "+id));
         return Mapper.map(user, UserDto.class);
+    }
+
+    @Override
+    public UserDto findByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isEmpty()){
+            throw new NotFoundException("Invalid Email .. !"+email);
+        }else {
+            return Mapper.map(user, UserDto.class);
+        }
     }
 
     @Override

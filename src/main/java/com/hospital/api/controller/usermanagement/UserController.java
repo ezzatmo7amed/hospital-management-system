@@ -2,7 +2,7 @@ package com.hospital.api.controller.usermanagement;
 
 
 import com.hospital.api.payload.userManagement.UserDto;
-import com.hospital.api.service.UserService;
+import com.hospital.api.service.usermanagement.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +25,20 @@ public class UserController {
 
         return ResponseEntity.ok(userService.create(model));
     }
+
+    @PostMapping("addUsers")
+    public ResponseEntity<List<UserDto>> addUsers(@RequestBody List<UserDto> users){
+        return ResponseEntity.ok(userService.addUsers(users));
+    }
     @GetMapping(path = "{userId}/user")
     public ResponseEntity<UserDto> getById(@PathVariable(value = "userId") Long id){
 
         return ResponseEntity.ok(userService.getById(id));
+    }
+
+    @GetMapping("email")
+    public ResponseEntity<UserDto> findByEmail(@RequestParam(value = "email") String email){
+        return ResponseEntity.ok(userService.findByEmail(email));
     }
     @GetMapping("all")
     public ResponseEntity<List<UserDto>> getAllUsers() {

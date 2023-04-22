@@ -8,9 +8,8 @@ package com.hospital.api.controller;
 import com.hospital.api.payload.doctor.DoctorDeptModel;
 import com.hospital.api.payload.doctor.DoctorDto;
 import com.hospital.api.payload.patient.PatientModel;
-import com.hospital.api.service.DoctorService;
+import com.hospital.api.service.doctor.DoctorService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

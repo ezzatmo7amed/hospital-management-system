@@ -1,4 +1,4 @@
-package com.hospital.api.service;
+package com.hospital.api.service.usermanagement;
 
 
 
@@ -9,9 +9,11 @@ import java.util.List;
 public interface UserService {
 
     UserDto create(UserDto model);
+    List<UserDto> addUsers(List<UserDto> users);
     UserDto getById(Long id);
     List<UserDto> getAllUsers();
     UserDto update(UserDto model);
+    UserDto findByEmail(String email);
 
     void deleteUserById(Long id);
 }

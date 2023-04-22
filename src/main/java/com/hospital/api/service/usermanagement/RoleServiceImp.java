@@ -1,4 +1,4 @@
-package com.hospital.api.service.Imp;
+package com.hospital.api.service.usermanagement;
 
 
 import com.hospital.api.exception.NotFoundException;
@@ -6,7 +6,6 @@ import com.hospital.api.exception.ResourceExists;
 import com.hospital.api.model.usermanagement.Role;
 import com.hospital.api.payload.userManagement.RoleDto;
 import com.hospital.api.repository.RoleRepository;
-import com.hospital.api.service.RoleService;
 import com.hospital.api.util.Mapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

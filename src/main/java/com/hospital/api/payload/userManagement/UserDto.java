@@ -13,8 +13,8 @@ import java.util.Set;
 public class UserDto {
 
     private Long id;
-    private String name;
-    private String userName;
+  //  private String name;
+    private String username;
     private String password;
     @Email
     private String email;

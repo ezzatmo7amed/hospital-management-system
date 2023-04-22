@@ -2,9 +2,8 @@ package com.hospital.api.controller;
 
 
 import com.hospital.api.payload.department.DepartmentBuildingDto;
-import com.hospital.api.service.DepartmentBuildingService;
+import com.hospital.api.service.department.DepartmentBuildingService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

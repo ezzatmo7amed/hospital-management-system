@@ -1,7 +1,7 @@
 package com.hospital.api.controller.RestTemplateTest;
 
 import com.hospital.api.payload.RestTemplateTest.CommentDto;
-import com.hospital.api.service.Imp.RestTemplateTest.RestTemplateCommentService;
+import com.hospital.api.service.RestTemplateTest.RestTemplateCommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

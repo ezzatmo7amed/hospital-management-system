@@ -1,7 +1,7 @@
 package com.hospital.api.controller.filesUpload;
 
 
-import com.hospital.api.service.Imp.filesUpload.FileUploadService;
+import com.hospital.api.service.filesUpload.FileUploadService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

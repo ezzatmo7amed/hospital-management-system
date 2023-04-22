@@ -4,6 +4,7 @@ package com.hospital.api.payload.nurse;
 
 
 import com.hospital.api.payload.department.DepartmentDto;
+import com.hospital.api.payload.userManagement.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,6 @@ public class NurseDto {
     private String position;
     private Long mgrId;
     private DepartmentDto dept;
+    private UserDto user;
 
 }

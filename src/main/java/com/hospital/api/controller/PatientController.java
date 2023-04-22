@@ -5,7 +5,7 @@ package com.hospital.api.controller;
 
 import com.hospital.api.payload.patient.PatientDto;
 import com.hospital.api.payload.patient.PatientModel;
-import com.hospital.api.service.PatientService;
+import com.hospital.api.service.patient.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
 
 import lombok.AllArgsConstructor;

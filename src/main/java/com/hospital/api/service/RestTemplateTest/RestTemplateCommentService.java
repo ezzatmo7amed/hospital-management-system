@@ -1,4 +1,4 @@
-package com.hospital.api.service.Imp.RestTemplateTest;
+package com.hospital.api.service.RestTemplateTest;
 
 import com.hospital.api.payload.RestTemplateTest.CommentDto;
 

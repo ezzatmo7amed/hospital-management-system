@@ -3,7 +3,7 @@ package com.hospital.api.controller;
 
 
 import com.hospital.api.payload.department.DepartmentDto;
-import com.hospital.api.service.DepartmentService;
+import com.hospital.api.service.department.DepartmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
