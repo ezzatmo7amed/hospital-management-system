@@ -16,9 +16,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@Table(name = "patients", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"unified_number"})
-})
+@Table(name = "patients")
 
 public class Patient extends BaseAuditing<Long> {
 
@@ -27,7 +25,7 @@ public class Patient extends BaseAuditing<Long> {
     private String name;
     @Column(name = "address" ,nullable = false)
     private String address;
-    @Column(name = "unified_number" ,nullable = false)
+    @Column(name = "unified_number" ,unique = true,nullable = false)
     private String unifiedNumber;
     @Column(name = "age" ,nullable = false)
     private int age;
@@ -36,11 +34,11 @@ public class Patient extends BaseAuditing<Long> {
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "exit_date" ,nullable = true)
+    @Column(name = "exit_date")
     private Date exitDate;
     @Column(name = "current_division" ,nullable = false)
     private String currentDivision;
-    @Column(name = "transfer_to_another_division" ,nullable = true)
+    @Column(name = "transfer_to_another_division")
     private String transferTo;
 
 

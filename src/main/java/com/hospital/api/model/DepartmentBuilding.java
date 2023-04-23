@@ -16,9 +16,9 @@ public class DepartmentBuilding extends BaseEntity<Long> {
 
 
 
-    @Column(name = "department_name",nullable = false)
+    @Column(name = "department_name",unique = true,nullable = false)
     private String name;
-    @Column(name = "room_number",nullable = false)
+    @Column(name = "room_number",unique = true,nullable = false)
     private int roomNumber;
 
     @OneToMany(mappedBy = "building")

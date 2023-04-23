@@ -34,10 +34,10 @@ public class PatientStatus extends BaseEntity<Long> {
     private String newSymptoms;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "follow_up_time" ,nullable = true)
+    @Column(name = "follow_up_time")
     private Date followUpTime;
 
-    @Column(name = "notes",length = 400,nullable = true)
+    @Column(name = "notes",length = 400)
     private String note;
 
     @ManyToOne

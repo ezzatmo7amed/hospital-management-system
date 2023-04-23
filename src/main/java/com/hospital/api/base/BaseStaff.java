@@ -17,7 +17,7 @@ public abstract class BaseStaff <ID> {
 
     @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "phone" ,nullable = false)
+    @Column(name = "phone" ,unique = true,nullable = false)
     private String phone;
     @Column(name = "address" ,nullable = false)
     private String address;
@@ -28,6 +28,6 @@ public abstract class BaseStaff <ID> {
     private String position;
     @Column(name = "gender" ,nullable = false)
     private String gender;
-    @Column(name = "manager_id" ,nullable = true)
+    @Column(name = "manager_id")
     private Long mgrId;
 }

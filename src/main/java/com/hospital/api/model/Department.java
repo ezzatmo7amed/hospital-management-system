@@ -14,9 +14,9 @@ import java.util.List;
 @Table(name = "departments")
 public class Department extends BaseEntity<Long> {
 
-    @Column(name = "department_name",nullable = false)
+    @Column(name = "department_name",unique = true,nullable = false)
     private String name;
-    @Column(name = "department_code",nullable = false)
+    @Column(name = "department_code",unique = true,nullable = false)
     private String code;
 
     @OneToMany(mappedBy = "dept")

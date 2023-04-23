@@ -81,9 +81,21 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDto update(UserDto model) {
         Long userId = model.getId();
-        User user =userRepository.findById(userId).orElseThrow();
-      //  user = Mapper.map(model, User.class);
-        userRepository.save(user);
+        User user =userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User Not Found With Id:"+userId));
+
+        String userEmail;
+
+        if(model.getEmail() == null){
+            userEmail = userRepository.findEmailWithId(userId);
+            User user1 = Mapper.map(model, User.class);
+            user1.setEmail(userEmail);
+            user1.setPassword(model.getPassword().toUpperCase());
+            userRepository.save(user1);
+        }else {
+            User user1 = Mapper.map(model, User.class);
+            userRepository.save(user1);
+        }
+
         return Mapper.map(user,UserDto.class);
     }
 
