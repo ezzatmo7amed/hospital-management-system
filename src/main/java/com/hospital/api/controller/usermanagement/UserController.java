@@ -1,7 +1,10 @@
 package com.hospital.api.controller.usermanagement;
 
 
+import com.hospital.api.exception.NotFoundException;
+import com.hospital.api.model.usermanagement.User;
 import com.hospital.api.payload.userManagement.UserDto;
+import com.hospital.api.security.jwt.JwtGeneratorInterface;
 import com.hospital.api.service.usermanagement.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -18,6 +23,7 @@ public class UserController {
 
     private final UserService userService;
 
+    private final JwtGeneratorInterface jwtGenerator;
 
 
     @PostMapping("create")
@@ -54,4 +60,12 @@ public class UserController {
 
        return userService.deleteUserById(id);
     }
+
+
+
+    @PostMapping("login")
+    public ResponseEntity<Map<String, String>> login(@RequestBody UserDto user){
+        return ResponseEntity.ok(userService.login(user));
+    }
+
 }

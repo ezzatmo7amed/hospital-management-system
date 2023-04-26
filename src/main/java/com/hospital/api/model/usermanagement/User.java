@@ -31,7 +31,8 @@ public class User extends BaseEntity<Long> {
     private String email;
 
     @UpdateTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
     private Date createdAt;
 
 

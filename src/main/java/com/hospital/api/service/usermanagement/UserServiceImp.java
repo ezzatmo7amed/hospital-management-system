@@ -7,14 +7,16 @@ import com.hospital.api.exception.ResourceExists;
 import com.hospital.api.model.usermanagement.User;
 import com.hospital.api.payload.userManagement.UserDto;
 import com.hospital.api.repository.UserRepository;
+import com.hospital.api.security.jwt.JwtGeneratorInterface;
 import com.hospital.api.util.Mapper;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -22,6 +24,7 @@ import java.util.Optional;
 public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
+    private final JwtGeneratorInterface jwtGenerator;
 
     @Override
     public UserDto create(UserDto model) {
@@ -107,5 +110,29 @@ public class UserServiceImp implements UserService {
             userRepository.deleteById(id);
            return "User Deleted With Id :"+id;
         }
+    }
+
+    @Override
+    public Optional<User> getUserByNameAndPassword(String name, String password) {
+        Optional<User> user = userRepository.findByUsernameAndPassword(name, password);
+        if(user == null){
+            throw new NotFoundException("Invalid id and password");
+        }
+        return user;
+    }
+
+    @Override
+    public Map<String, String> login(UserDto user) {
+
+            Optional<User> user1 = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+            if (user.getUsername().isEmpty() || user.getPassword().isEmpty()) {
+                throw new NotFoundException("UserName or Password is Empty");
+            } else if (user1.isEmpty()) {
+                throw new NotFoundException("UserName or Password is Invalid");
+            } else {
+
+                return jwtGenerator.generateToken(user);
+            }
+
     }
 }
