@@ -114,7 +114,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public Optional<User> getUserByNameAndPassword(String name, String password) {
-        Optional<User> user = userRepository.findByUsernameAndPassword(name, password);
+        Optional<User> user = userRepository.findByUsernameAndPassword(name,password);
         if(user == null){
             throw new NotFoundException("Invalid id and password");
         }
@@ -122,7 +122,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public Map<String, String> login(UserDto user) {
+    public Map<String,String> login(UserDto user) {
 
             Optional<User> user1 = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
             if (user.getUsername().isEmpty() || user.getPassword().isEmpty()) {
@@ -130,7 +130,6 @@ public class UserServiceImp implements UserService {
             } else if (user1.isEmpty()) {
                 throw new NotFoundException("UserName or Password is Invalid");
             } else {
-
                 return jwtGenerator.generateToken(user);
             }
 
