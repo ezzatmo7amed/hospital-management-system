@@ -6,7 +6,6 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -48,12 +47,16 @@ public class PdfGenerator {
     @Value("${table.columnNames}")
     private List<String> columnNames;
 
-    @Autowired
-    private DoctorRepository eRepo;
+
+    private final DoctorRepository eRepo;
 
     private static Font COURIER = new Font(Font.FontFamily.COURIER, 20, Font.BOLD);
     private static Font COURIER_SMALL = new Font(Font.FontFamily.COURIER, 16, Font.BOLD);
     private static Font COURIER_SMALL_FOOTER = new Font(Font.FontFamily.COURIER, 12, Font.BOLD);
+
+    public PdfGenerator(DoctorRepository eRepo) {
+        this.eRepo = eRepo;
+    }
 
     public void generatePdfReport() {
 
@@ -130,11 +133,18 @@ public class PdfGenerator {
             table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
             table.addCell(doctor.getId().toString());
-            table.addCell(doctor.getName());
             table.addCell(doctor.getAddress());
-            table.addCell(currencySymbol + doctor.getMgrId().toString());
+            table.addCell(String.valueOf(doctor.getHireDate()));
+            table.addCell(String.valueOf(doctor.getMgrId()));
+            table.addCell(doctor.getName());
+            table.addCell(doctor.getPhone());
+            table.addCell(doctor.getPosition());
+           // table.addCell(String.valueOf(doctor.getDept().getId()));
+          //  table.addCell(String.valueOf(doctor.getUser().getId()));
 
-            System.out.println(doctor.getName());
+            System.out.print(doctor.getId()+" | "+doctor.getAddress()+" | "+doctor.getName());
+           // System.out.print("==========================================================");
+            System.out.println();
         }
 
     }

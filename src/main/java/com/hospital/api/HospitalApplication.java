@@ -17,7 +17,7 @@ public class HospitalApplication {
         return new ModelMapper();
     }
     public static void main(String[] args) {
-        SpringApplication.run(HospitalApplication.class, args);
+     //   SpringApplication.run(HospitalApplication.class, args);
 
         ApplicationContext ac = SpringApplication.run(HospitalApplication.class, args);
 
